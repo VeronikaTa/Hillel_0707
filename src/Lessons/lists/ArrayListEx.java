@@ -11,6 +11,9 @@ public class ArrayListEx {
         myArrayList.add("Thomas");
         String name = myArrayList.get(0);
         System.out.println(name);
+        myArrayList.add("Lucy");
+        name = myArrayList.get(0);
+        System.out.println(name);
 
         System.out.println(myArrayList.indexOf("Helen"));
         myArrayList.set(0, "Mark");
