@@ -13,9 +13,9 @@ public class Burger {
 
     Burger(String bun, String[] sauce, String[] cheese, String[] patty) {
         this.bun = bun;
-        this.sauce = sauce;
-        this.cheese = cheese;
-        this.patty = patty;
+        this.sauce = Arrays.copyOf(sauce, 2);
+        this.cheese = Arrays.copyOf(cheese, 2);
+        this.patty = Arrays.copyOf(patty, 2);
         setBurgerPrice();
     }
 
