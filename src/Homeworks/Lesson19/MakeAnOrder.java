@@ -18,23 +18,31 @@ public class MakeAnOrder {
         sauce[0] = chooseSauce();
         cheese[0] = chooseCheese();
 
-
-        while (addIngredient) {
+        for (int i = 0; i < 3; i++) {
             System.out.println("Would you like an additional ingredient? Yes / No");
             choice = scanner.nextLine();
             if (choice.equalsIgnoreCase("yes")) {
                 boolean invalidIngredient = false;
                 do {
-                    System.out.println("Enter a number or  name. Choose one:" +
-                            "\n Number 0: patty (" + MeatPatty.getPattyPrice() + " UAH). \n" +
-                            "Number 1: sauce (" + Sauce.getSaucePrice() + " UAH). \n" +
-                            "Number 2: cheese (" + Cheese.getCheesePrice() + "Uah). \n");
+                    System.out.println("Enter a number or  name. Choose one:");
+                    if (patty[1] == null) {
+                        System.out.println("Number 0: patty (" + MeatPatty.getPattyPrice() + " UAH). \n");
+                    }
+                    if (sauce[1] == null) {
+                        System.out.println("Number 1: sauce (" + Sauce.getSaucePrice() + " UAH). \n");
+                    }
+                    if (cheese[1] == null) {
+                        System.out.println("Number 2: cheese (" + Cheese.getCheesePrice() + " UAH). \n");
+                    }
                     choice = scanner.nextLine();
-                    if (choice.equals("0") || choice.equalsIgnoreCase("patty")) {
+                    if ((choice.equals("0") || choice.equalsIgnoreCase("patty")) && patty[1] == null) {
+                        invalidIngredient = false;
                         patty[1] = choosePatty();
-                    } else if (choice.equals("1") || choice.equalsIgnoreCase("sauce")) {
+                    } else if ((choice.equals("1") || choice.equalsIgnoreCase("sauce")) && sauce[1] == null) {
+                        invalidIngredient = false;
                         sauce[1] = chooseSauce();
-                    } else if (choice.equals("2") || choice.equalsIgnoreCase("cheese")) {
+                    } else if ((choice.equals("2") || choice.equalsIgnoreCase("cheese")) && cheese[1] == null) {
+                        invalidIngredient = false;
                         cheese[1] = chooseCheese();
                     } else {
                         System.out.println("Sorry. Invalid choice.Try again:");
@@ -43,7 +51,7 @@ public class MakeAnOrder {
                 }
                 while (invalidIngredient);
             } else if (choice.equalsIgnoreCase("no")) {
-                addIngredient = false;
+                break;
             } else {
                 System.out.println("Sorry. Invalid choice. Try again:");
             }
